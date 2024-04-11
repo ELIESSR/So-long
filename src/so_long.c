@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/10 15:13:45 by elteran          ###   ########.fr       */
+/*   Updated: 2024/04/11 16:32:28 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void map_size(t_data *mapp, char *file)
 	}
 	close(fd);
 } 
-void	show_error(char *str)
+void	ms_error(char *str)
 {
 	ft_putstr_fd(RED "ERROR: ", 2);
 	ft_putstr_fd(str, 2);
@@ -51,7 +51,6 @@ void free_map(char **map)
 		i++;
 	}
 	free(map);
-	ft_printf("error xd");
 	exit(EXIT_FAILURE);
 }
 

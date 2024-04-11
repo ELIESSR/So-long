@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/10 15:17:02 by elteran          ###   ########.fr       */
+/*   Updated: 2024/04/11 16:33:40 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_data
 void    free_map(char **map);
 void    map_ext(const char *str, const char *to_find);
 
-void	show_error(char *str);
+void	ms_error(char *str);
 
 /*MAP*/
 
@@ -93,7 +93,6 @@ void    map_size(t_data *map, char *file);
 void	check_characters(t_data *mapp);
 void	correct_character(t_data *mapp);
 void    map_check(t_data *mapp);
-
-// extern int parsing(int b; char *map);
+// extern int parsing(int b, char *map);
 
 #endif
