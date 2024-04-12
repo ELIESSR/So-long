@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/11 16:33:40 by elteran          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:00:56 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@
 
 #define CLEAR "\x1b[0m"
 #define RED "\x1b[31m"
+
+#define PLAYER "textures/frisk.xpm"
+#define WALL "textures/wall.xpm"
+#define COIN "textures/heart.xpm"
+#define FLOOR "textures/floor.xpm"
+#define EXIT "textures/save.xpm"
  
 #include "mlx/mlx.h"
 #include "libft/libft.h"
@@ -45,16 +51,16 @@ typedef struct s_map
 
 typedef struct s_count
 {
-    int player;
-    int coin;
-    int end;
+    int playercn;
+    int coincn;
+    int endcn;
            
 } t_count;
 
 typedef struct s_img
 {
     void    *wall;
-    void    *character;
+    void    *player;
     void    *floor;
     void    *coin;
     void    *exit;
@@ -82,9 +88,13 @@ void	ms_error(char *str);
 
 /*MAP*/
 
-void    map_read(t_map *map, char *file);
+void    map_read(t_data *map, char *file);
 int     key_handler(int keycode, t_data *game);
-void    init(char *si, t_data *map);
+void    init(t_data *game);
+
+void	put_sprites(t_data *mapp);
+void	put_floor(t_data *flr);
+void	game_init(t_data *game);
 
 /*CHECK*/
 

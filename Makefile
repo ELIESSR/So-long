@@ -15,7 +15,7 @@ RM = rm -f
 
 LIBFT_DIR = libft/
 
-SRCS = src/check.c src/so_long.c src/sprites.c
+SRCS = src/check.c src/so_long.c src/sprites.c src/utils.c
 
 OBJS = $(SRCS:.c=.o)
 	

@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/11 16:32:28 by elteran          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:57:21 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void map_size(t_data *mapp, char *file)
 	
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		 exit(EXIT_FAILURE);
+		 ms_error("FILE");
 	line = get_next_line(fd);
 	mapp->map->width_map = ft_strlen(line) - 1;
 	mapp->map->height_map = 0;
@@ -33,69 +33,30 @@ void map_size(t_data *mapp, char *file)
 	}
 	close(fd);
 } 
-void	ms_error(char *str)
+
+void	map_read(t_data *map, char *file)
 {
-	ft_putstr_fd(RED "ERROR: ", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd(CLEAR, 2);
-	exit(EXIT_FAILURE);
+	int		fd;
+	char	*line;
+	// int i = 0;
+
+	map_ext(file, ".ber");
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		ms_error("FILE");
+	line = get_next_line(fd);
+	// ft_printf("%s\n" ,line[i]);
+	// while (line[i])
+	// {
+	// 	ft_printf("%s\n" ,line[i]);
+	// 	line = get_next_line(fd);
+	// 	free(line);
+	// 	i ++;
+	// }
+	map_size(map, file);
+	map_check(map);
+	close(fd);
 }
-void free_map(char **map)
-{
-	int i;
-	
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-	exit(EXIT_FAILURE);
-}
-
-void	map_ext(const char *str, const char *to_find)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (str[i + j] == to_find[j])
-		{
-			if (str[i + j + 1] == '\0' && to_find[j + 1] == '\0')
-				 exit(EXIT_FAILURE);
-			j++;
-		}
-		i++;
-	}
-	return ;
-}
-
-/*========MAP=========*/
-
-// void	map_read(t_data *map, char *file)
-// {
-// 	int		fd;
-// 	char	*cmap;
-
-// 	map_ext(file, ".ber");
-// 	fd = open(file, O_RDONLY);
-// 	if (fd == -1)
-// 		return ;
-// 	close(fd);
-// }
-
-/*ESTA ES PARA INCIAR*/
-// void init(t_data *game)
-// {
-// 	game->mlx = mlx_init();
-// 	game->win = mlx_new_window(game->mlx, (game->map->width_map * 32),
-// 					(game->map->height_map * 32), "Letsgoyunpeiisback");
-// 	mlx_loop(game->mlx);
-// }
 
 int key_handler(int keycode, t_data *game)
 {
@@ -116,3 +77,28 @@ int key_handler(int keycode, t_data *game)
 }
 /* necesito saber las pocisiones */
 /* necesito hacer los movimientos */
+
+int main(int ac, char *argv[])
+{
+	t_data *game;
+	// int 	i = 0;
+	// int		fd = open(*argv, O_RDONLY); 
+	// char	*line = get_next_line(fd);
+	
+	game = ft_calloc(1, sizeof(t_data));
+	if (ac != 2)
+		ms_error("Bad arguments\n");
+	else
+	{
+		// while (line[i])
+		// {
+		// 	ft_printf("%s\n" ,line[i]);
+		// 	line = get_next_line(fd);
+		// 	free(line);
+		// 	i ++;
+		// }
+		map_read(game, argv[1]);
+		game_init(game);
+	}
+	return (0);
+}

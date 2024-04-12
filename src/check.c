@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/11 16:59:41 by elteran          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:43:20 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ void	check_characters(t_data *mapp)
 		while (mapp->map->map[i][j])
 		{
 			if (mapp->map->map[i][j] == 'P')
-				mapp->count->player++;
+				mapp->count->playercn++;
 			if (mapp->map->map[i][j] == 'E')
-				mapp->count->end++;
+				mapp->count->endcn++;
 			if (mapp->map->map[i][j] == 'C')
-				mapp->count->coin++;
+				mapp->count->coincn++;
 			j++;
 		}
 		i++;
 	}
-	if (mapp->count->coin < 1 || mapp->count->player != 1 || 
-					mapp->count->end != 1)
+	if (mapp->count->coincn < 1 || mapp->count->playercn != 1 || 
+					mapp->count->endcn != 1)
 		ms_error("si");
 }
 
@@ -91,25 +91,25 @@ void	check_rectangular(char **map, int y, int x)
 
 void map_check(t_data *mapp)
 {
-	mapp->count->coin = 0;
-	mapp->count->end = 0;
-	mapp->count->player = 0;
+	mapp->count->coincn = 0;
+	mapp->count->endcn = 0;
+	mapp->count->playercn = 0;
 
 	check_characters(mapp);//cuantos caracteres hay
 	check_rectangular(mapp->map->map, mapp->map->width_map, mapp->map->height_map);
 }
-int main() {
-    // Mapa de ejemplo
-    char *map[5] = {"11011", "10001", "11111"};
+// int main() {
+//     // Mapa de ejemplo
+//     char *map[5] = {"11011", "10001", "11111"};
 
-    // Dimensiones del mapa
-    int y = 3;
-    int x = 5;
+//     // Dimensiones del mapa
+//     int y = 3;
+//     int x = 5;
 
 
-    // Llamar a la función a probar
-	// while(map)
-	// {
-check_rectangular(map, y, x);
-	return 0;
-}
+//     // Llamar a la función a probar
+// 	// while(map)
+// 	// {
+// check_rectangular(map, y, x);
+// 	return 0;
+// }
