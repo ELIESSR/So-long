@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/11 18:43:20 by elteran          ###   ########.fr       */
+/*   Updated: 2024/04/24 18:53:05 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,14 @@ void	check_rectangular(char **map, int y, int x)
 
 
 
-void map_check(t_data *mapp)
+void map_check(t_data *mapp, int h, int w)
 {
 	mapp->count->coincn = 0;
 	mapp->count->endcn = 0;
 	mapp->count->playercn = 0;
 
 	check_characters(mapp);//cuantos caracteres hay
-	check_rectangular(mapp->map->map, mapp->map->width_map, mapp->map->height_map);
+	check_rectangular(mapp->map->map, h, w);
 }
 // int main() {
 //     // Mapa de ejemplo

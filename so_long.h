@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/12 14:00:56 by elteran          ###   ########.fr       */
+/*   Updated: 2024/04/24 18:59:26 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 #define CLEAR "\x1b[0m"
 #define RED "\x1b[31m"
+#define GREEN "\x1b[32m"
 
 #define PLAYER "textures/frisk.xpm"
 #define WALL "textures/wall.xpm"
@@ -99,10 +100,16 @@ void	game_init(t_data *game);
 /*CHECK*/
 
 void    check_rectangular(char **map, int y, int x);
-void    map_size(t_data *map, char *file);
+// void    map_size(/* t_data *map, */ char *file);
 void	check_characters(t_data *mapp);
+
+int map_height(int h, char *file);
+int map_width(int w, char *file);
+
 void	correct_character(t_data *mapp);
-void    map_check(t_data *mapp);
+/* void    map_check(t_data *mapp); */
+void map_check(t_data *mapp, int h, int w);
+void	map_malloc(t_data *m, int h, int w);
 // extern int parsing(int b, char *map);
 
 #endif
