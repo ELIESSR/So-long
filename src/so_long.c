@@ -6,131 +6,106 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/24 19:04:08 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/15 19:19:04 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-/*========UTILS==========*/
 
-// void map_size(t_data *mapp, char *file)
-// {
-// 	int fd;
-// 	char *line;
-	
-// 	fd = open(file, O_RDONLY);
-// 	if (fd == -1)
-// 		 ms_error("FILE");
-// 	line = get_next_line(fd);
-// 	mapp->map->width_map = ft_strlen(line) - 1;
-// 	mapp->map->height_map = 0;
-// 	while (line)
-// 	{
-// 		mapp->map->height_map++;
-// 		line = get_next_line(fd);
-// 		free(line);
-// 	}
-// 	close(fd);
-// } 
-
-void	map_malloc(t_data *m, int h, int w)
+void	map_read(t_map *mapp, char *file)
 {
-	int	i;
-	int j;
-
-	printf("el coño de su madre\n");
-	m->map->map = (char **)malloc(sizeof(int ) * h);
-	printf("el coño de su madre\n");
-	i = -1;
-	while (i < h)
-	{
-		printf("el coño de su madre\n");
-		m->map->map = malloc(sizeof(int *) * w);
-		i++;
-	}
-	i = -1;printf("el coño de su madre\n");
-	while (i < h)
-	{
-		j = -1;
-		while (j < w)
-		{
-			printf("el coño de su madre\n");
-			m->map->map[i][j] = 0;
-			j++;
-		}
-		i++;
-	}
-}
-
-void	map_read(t_data *map, char *file)
-{
-	printf("map read\n");
-	int h;
-	int w;
+	ft_printf("map read\n");
 	int		fd;
 
-/* 	map_ext(file, ".ber"); */
-	h = 0;
-	w = 0;
+ 	//map_ext(file, ".ber");
 	fd = open(file, O_RDONLY);
+	printf("fd: %d\n", fd);
 	if (fd == -1)
 		ms_error("FILE");
-	printf("pudo leer sin error\n");
-	printf("no tiene el tamaño\n");
-	w = map_width(w, file);
-	printf("w es %d\n", w);
-	h = map_height(h, file);
-	printf("h es %d\n", h);
-	map_malloc(map, h, w);
-	printf("reservo el espacio de memoria\n");
-	map_check(map, h, w);
+	printf("CORRECTO\n");
+	
+	// map_size(mapp, file);
+	ft_maplloc(mapp, file);
+	map_check(mapp);
 	printf("todo bien\n");
 	
 	close(fd);
 }
 
-int key_handler(int keycode, t_data *game)
+void	ft_maplloc(t_map *data, char *file)
 {
-	if(keycode == KEY_ESC)
+	int		fd;
+	char	*gnl;
+	int		i;
+
+	fd = open(file, O_RDONLY);
+	i = 0;
+	data->map = (char **)malloc(sizeof(char *) * (data->height_map + 1));
+	//if (!data->map)
+	while (i < data->height_map)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		exit(EXIT_SUCCESS);
+		gnl = get_next_line(fd);
+		//if (!gnl)
+		data->map[i] = ft_strdup(gnl);
+		// if (!data->map[i])
+		data->map[i][data->width_map] = '\0';
+		i++;
+		free(gnl);
 	}
-    // if (keycode == KEY_D || keycode == KEY_RIGHT)
-    //     vars->player.pos.x += 1;
-    // else if (keycode == KEY_S || keycode == KEY_LEFT)
-    //     vars->player.pos.x -= 1;
-    // else if (keycode == KEY_W || keycode == KEY_UP)
-    //     vars->player.pos.y -= 1;
-    // else if (keycode == KEY_S || keycode == KEY_DOWN)
-    //     vars->player.pos.y += 1;
-    return (0);
+	data->map[i] = 0;
+	close(fd);
 }
+
+
+// int key_handler(int keycode, t_data *game)
+// {
+// 	if(keycode == KEY_ESC)
+// 	{
+// 		mlx_destroy_window(game->mlx, game->win);
+// 		exit(EXIT_SUCCESS);
+// 	}
+//     // if (keycode == KEY_D || keycode == KEY_RIGHT)
+//     //     vars->player.pos.x += 1;
+//     // else if (keycode == KEY_S || keycode == KEY_LEFT)
+//     //     vars->player.pos.x -= 1;
+//     // else if (keycode == KEY_W || keycode == KEY_UP)
+//     //     vars->player.pos.y -= 1;
+//     // else if (keycode == KEY_S || keycode == KEY_DOWN)
+//     //     vars->player.pos.y += 1;
+//     return (0);
+// }
 /* necesito saber las pocisiones */
 /* necesito hacer los movimientos */
 
 int main(int ac, char *argv[])
 {
-	t_data *game;
+	// t_data game;
+	t_map  mapp;
 	
-	game = malloc(sizeof(t_data));
+	//game = malloc(sizeof(t_data));
 	if (ac != 2)
 		ms_error("Bad arguments\n");
 	else
 	{
 		printf( GREEN "entro al else\n");
-		game->mlx = mlx_init();
-		printf("inicio la ventana \n");
-		map_read(game, argv[1]);
-		printf("tiene el mapa\n");
+		//game->mlx = mlx_init();
+		printf("inicio Sla ventana \n");
+		printf("argumento 01 es : %s \n", argv[1]);
+		map_size(&mapp, argv[1]);
+		map_read(&mapp, argv[1]);
 
-/* 		game_init(&game); */
-		game->win = mlx_new_window(game->mlx, (game->map->width_map * 32),
-					(game->map->height_map * 32), "Letsgoyunpeiisback");
-		put_floor(game);
-
-		mlx_loop(game->mlx);
+ 		mapp.mlx = mlx_init();
+		
+		mapp.win = mlx_new_window(mapp.mlx, (mapp.width_map * 64),
+					(mapp.height_map * 64), "Letsgoyunpeiisback");
+		if (!init_images(&mapp))
+		{
+            fprintf(stderr, "Error al inicializar las imágenes\n");
+            return 1;
+		}
+		mlx_loop_hook(mapp.mlx, draw_map, &mapp);
+		mlx_loop(mapp.mlx);
 	}
 	return (0);
 }

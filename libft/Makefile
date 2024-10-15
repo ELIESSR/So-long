@@ -11,7 +11,7 @@ RED		=	\033[91;1m
 GREEN	=	\033[92;1m
 CLEAR	=	\033[0m
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIC -fPIE
 
 SRCs = char/ft_isalnum.c		\
 	   char/ft_isalpha.c		\

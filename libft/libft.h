@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:18:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/05 18:59:23 by elteran          ###   ########.fr       */
+/*   Updated: 2024/06/03 18:34:10 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stddef.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -88,7 +89,7 @@ int		hexa_re(unsigned long n, char *hex);
 
 char	*get_next_line(int fd);
 size_t	ft_strlen_gnl(const char *s);
-// char	*ft_strchr(const char *s, int c);
+char	*ft_strchr_gnl(const char *s, int c);
 char	*ft_strjoin_gnl(char const *s1, const char *s2);
 char	*ft_substr_gnl(char const *s, unsigned int start, size_t len);
 char	*ft_strdup_gnl(const char *s1);

@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/04/24 18:59:26 by elteran          ###   ########.fr       */
+/*   Updated: 2024/07/15 18:50:31 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,18 @@
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
 
-#define PLAYER "textures/frisk.xpm"
-#define WALL "textures/wall.xpm"
-#define COIN "textures/heart.xpm"
+#define PLAYER "textures/bear.xpm"
+#define WALL "textures/tree.xpm"
+#define COIN "textures/salmon.xpm"
 #define FLOOR "textures/floor.xpm"
-#define EXIT "textures/save.xpm"
+#define EXIT "textures/cave.xpm"
  
-#include "mlx/mlx.h"
+#include "minilibx-linux/mlx.h"
 #include "libft/libft.h"
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
 
-
-typedef struct s_map
-{
-    char    **map;
-    int     height_map;
-    int     width_map;
-    
-} t_map;
 
 typedef struct s_count
 {
@@ -60,25 +52,37 @@ typedef struct s_count
 
 typedef struct s_img
 {
-    void    *wall;
-    void    *player;
-    void    *floor;
-    void    *coin;
-    void    *exit;
+    int   *wall;
+    int    *player;
+    int   *floor;
+    int    *coin;
+    int    *exit;
     int		width;
     int		height;
 
 }   t_img;
 
-typedef struct s_data
+typedef struct s_map
 {
+    char    **map;
+    int     height_map;
+    int     width_map;
     void    *mlx;
     void    *win;
-    t_map   *map;
     t_img	*img;
     t_count *count;
     
-} t_data;
+} t_map;
+
+// typedef struct s_data
+// {
+//     void    *mlx;
+//     void    *win;
+//     t_map   *map;
+//     t_img	*img;
+//     t_count *count;
+    
+// } t_data;
 
 /*UTILS*/
 
@@ -89,27 +93,33 @@ void	ms_error(char *str);
 
 /*MAP*/
 
-void    map_read(t_data *map, char *file);
-int     key_handler(int keycode, t_data *game);
-void    init(t_data *game);
+void    map_read(t_map *map, char *file);
+// int     key_handler(int keycode, t_data *game);
+// void    init(t_data *game);
 
-void	put_sprites(t_data *mapp);
-void	put_floor(t_data *flr);
-void	game_init(t_data *game);
+void    put_sprites(t_map *mapp, int *i, int *j);
+void	put_floor(t_map *mapp);
+int     init_images(t_map *mapp);
+void    ft_draw(t_map *mapp);
+int     draw_map(t_map *mapp);
+void	game_init(t_map *game);
 
 /*CHECK*/
 
-void    check_rectangular(char **map, int y, int x);
-// void    map_size(/* t_data *map, */ char *file);
-void	check_characters(t_data *mapp);
+void	check_characters(t_map *mapp);
+void	check_rectangular(t_map *mapp);
 
-int map_height(int h, char *file);
-int map_width(int w, char *file);
-
-void	correct_character(t_data *mapp);
-/* void    map_check(t_data *mapp); */
-void map_check(t_data *mapp, int h, int w);
-void	map_malloc(t_data *m, int h, int w);
+void	correct_character(t_map *data);
+//void	correct_character(t_map *mapp);
+void    map_check(t_map *mapp);
+void    save_map(t_map *mapp, int fd);
+void    map_size(t_map *mapp, char *file);
 // extern int parsing(int b, char *map);
 
+
+
+//temporal
+//void print_map(char **map);
+//void *init_map(int rows, int cols);
+void	ft_maplloc(t_map *data, char *file);
 #endif
