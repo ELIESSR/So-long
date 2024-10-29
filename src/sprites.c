@@ -6,31 +6,11 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:19 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/29 19:26:52 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/29 19:54:28 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-// void	put_floor(t_map *mapp)
-// {
-// 	int i;
-// 	int j;
-// 	t_data game;
-// 	t_img flr;
-// 	i = 0;
-// 	while(mapp->map[i])
-// 	{
-// 		j = 0; 
-// 		while(mapp->map[i][j])
-// 		{
-// 			mlx_put_image_to_window(game.mlx, game.win, flr.floor, 
-// 						i * 100, j * 100);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
 
 int init_images(t_map *mapp)
 {

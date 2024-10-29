@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/16 19:49:15 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/29 19:54:06 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,6 @@
 
 /*======CHECK========*/
 
-// void	correct_character(t_map *mapp)
-// {
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	while (mapp->map[i] != NULL)
-// 	{
-// 		j = 0;
-// 		while(mapp->map[i][j])
-// 		{
-// 			printf("caracter j : %s \n", mapp->map[j]);
-// 			if (mapp->map[i][j] != 'P' && mapp->map[i][j] != '0' && 
-// 					mapp->map[i][j] != '1' && mapp->map[i][j] != 'C' && 
-// 					mapp->map[i][j] != 'E')
-// 				ms_error("character error");
-// 			else{
-// 				printf("biiaobvr\n");		
-// 				j++;
-// 			}
-// 		}
-// 		printf("pemne");
-// 		i++;
-// 	}
-	
-// }
 void	correct_character(t_map *data)
 {
 	int	i;
