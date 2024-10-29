@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/15 19:19:04 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/16 19:28:24 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 
 void	map_read(t_map *mapp, char *file)
 {
-	ft_printf("map read\n");
 	int		fd;
 
  	//map_ext(file, ".ber");
 	fd = open(file, O_RDONLY);
-	printf("fd: %d\n", fd);
 	if (fd == -1)
 		ms_error("FILE");
-	printf("CORRECTO\n");
 	
 	// map_size(mapp, file);
 	ft_maplloc(mapp, file);
 	map_check(mapp);
-	printf("todo bien\n");
 	
 	close(fd);
 }
@@ -88,10 +84,7 @@ int main(int ac, char *argv[])
 		ms_error("Bad arguments\n");
 	else
 	{
-		printf( GREEN "entro al else\n");
 		//game->mlx = mlx_init();
-		printf("inicio Sla ventana \n");
-		printf("argumento 01 es : %s \n", argv[1]);
 		map_size(&mapp, argv[1]);
 		map_read(&mapp, argv[1]);
 

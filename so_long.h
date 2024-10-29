@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/07/15 18:50:31 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/29 19:33:08 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 # define SO_LONG_H
 
 /* ================ KEYS ================ */
-#define KEY_ESC 53
-#define KEY_W 13
-#define KEY_A 0
-#define KEY_S 1
-#define KEY_D 2
-#define KEY_UP 126
-#define KEY_LEFT 123
-#define KEY_DOWN 125
-#define KEY_RIGHT 124
-#define ON_DESTROY 17
+# define KEY_ESC 53
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_UP 126
+# define KEY_LEFT 123
+# define KEY_DOWN 125
+# define KEY_RIGHT 124
+# define KEY_CLOSE_WIN 17
 
 #define CLEAR "\x1b[0m"
 #define RED "\x1b[31m"
@@ -67,6 +67,8 @@ typedef struct s_map
     char    **map;
     int     height_map;
     int     width_map;
+    int     x_p;
+    int     y_p;
     void    *mlx;
     void    *win;
     t_img	*img;
@@ -116,6 +118,9 @@ void    save_map(t_map *mapp, int fd);
 void    map_size(t_map *mapp, char *file);
 // extern int parsing(int b, char *map);
 
+/*MOVES*/
+
+void    position_P(t_map *data);
 
 
 //temporal

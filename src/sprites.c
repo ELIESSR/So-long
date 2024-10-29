@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:19 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/15 19:18:45 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/29 19:26:52 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 // 	int j;
 // 	t_data game;
 // 	t_img flr;
-
 // 	i = 0;
 // 	while(mapp->map[i])
 // 	{
@@ -47,8 +46,8 @@ int init_images(t_map *mapp)
     mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx, "textures/cave.xpm", &i, &j);
     mapp->img->coin = mlx_xpm_file_to_image(mapp->mlx, "textures/salmon.xpm", &i, &j);
 
-    if (!mapp->img->wall || !mapp->img->player || !mapp->img->exit || !mapp->img->coin) {
-        printf("Error al cargar las imágenes\n");
+    if (!mapp->img->wall || !mapp->img->player || !mapp->img->exit || !mapp->img->coin)
+	{
        	exit(EXIT_FAILURE);
     }
     return 1; // Devuelve 1 si tiene éxito, 0 en caso de error
@@ -57,15 +56,12 @@ void	put_sprites(t_map *mapp, int *i, int  *j)
 {
 	if (!mapp || !mapp->map)
 	{
-        printf("Error: mapp o mapp->map es nulo\n");
         exit(EXIT_FAILURE);
     }
 	if (*i < 0 || *j < 0 || *i >= mapp->height_map || *j >= mapp->width_map)
 	{
-        printf("Error: índice fuera de los límites (i=%ls, j=%ls)\n", i, j);
-		exit(EXIT_FAILURE);
+    	exit(EXIT_FAILURE);
 	}
-	  printf("put_sprites: mapp->map[%d][%d] = %c\n", *i, *j, mapp->map[*i][*j]);
 	if(mapp->map[*i][*j] == '1')
 		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->wall, 
 			(*j) * 64, (*i) * 64);
@@ -81,7 +77,7 @@ void	put_sprites(t_map *mapp, int *i, int  *j)
 	else if(mapp->map[*i][*j] == 'C')
 		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->coin, 
 			(*j) * 64, (*i) * 64);
-	ft_printf("mamaguebo piso\n");
+	position_P(mapp);
 }
 
 void ft_draw(t_map *mapp)
@@ -97,10 +93,8 @@ void ft_draw(t_map *mapp)
 		{
             put_sprites(mapp, &i, &j);            
 			j++;
-            printf("la j es = %d\n", j);
         }
         i++;
-        printf("la i es = %d\n", i);
     }
 }
 
