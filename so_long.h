@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/30 21:49:24 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/30 21:58:26 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_map
     int     y_p;
     void    *mlx;
     void    *win;
+    int     moves;
     t_img	*img;
     t_count *count;
     

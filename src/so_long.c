@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/30 20:54:58 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/30 22:06:40 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int main(int ac, char *argv[])
             fprintf(stderr, "Error al inicializar las imágenes\n");
             return 1;
 		}
-		//ft_printf(CLEAR "Moves: %d\n", mapp->ppl.moves);
+		printf("Number of movements:%d\n", mapp.moves);
 		mlx_loop_hook(mapp.mlx, draw_map, &mapp);
 		mlx_hook(mapp.win, KEY_CLOSE_WIN, 0, x_pressed, &mapp);
 		mlx_key_hook(mapp.win, key_handler, &mapp);

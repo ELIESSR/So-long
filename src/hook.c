@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:58:36 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/30 21:50:45 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/30 21:56:46 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,3 @@ int key_handler(int keycode, t_map *data)
        move_down(data);
     return (0);
 }
-/* necesito saber las pocisiones */
-/* necesito hacer los movimientos */
