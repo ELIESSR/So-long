@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/30 20:55:44 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/30 21:49:24 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,10 @@ void    map_size(t_map *mapp, char *file);
 void    position_P(t_map *data);
 int     key_handler(int keycode, t_map *data);
 int     x_pressed(t_map *mapp);
+void    move_right(t_map *data);
+void    move_left(t_map *data);
+void    move_up(t_map *data);
+void    move_down(t_map *data);
 
 
 //temporal
