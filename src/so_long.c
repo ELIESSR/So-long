@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/16 19:28:24 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/30 20:54:58 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,6 @@ void	ft_maplloc(t_map *data, char *file)
 	close(fd);
 }
 
-
-// int key_handler(int keycode, t_data *game)
-// {
-// 	if(keycode == KEY_ESC)
-// 	{
-// 		mlx_destroy_window(game->mlx, game->win);
-// 		exit(EXIT_SUCCESS);
-// 	}
-//     // if (keycode == KEY_D || keycode == KEY_RIGHT)
-//     //     vars->player.pos.x += 1;
-//     // else if (keycode == KEY_S || keycode == KEY_LEFT)
-//     //     vars->player.pos.x -= 1;
-//     // else if (keycode == KEY_W || keycode == KEY_UP)
-//     //     vars->player.pos.y -= 1;
-//     // else if (keycode == KEY_S || keycode == KEY_DOWN)
-//     //     vars->player.pos.y += 1;
-//     return (0);
-// }
-/* necesito saber las pocisiones */
-/* necesito hacer los movimientos */
-
 int main(int ac, char *argv[])
 {
 	// t_data game;
@@ -97,7 +76,10 @@ int main(int ac, char *argv[])
             fprintf(stderr, "Error al inicializar las imágenes\n");
             return 1;
 		}
+		//ft_printf(CLEAR "Moves: %d\n", mapp->ppl.moves);
 		mlx_loop_hook(mapp.mlx, draw_map, &mapp);
+		mlx_hook(mapp.win, KEY_CLOSE_WIN, 0, x_pressed, &mapp);
+		mlx_key_hook(mapp.win, key_handler, &mapp);
 		mlx_loop(mapp.mlx);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/29 19:33:08 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/30 20:55:44 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,34 @@
 # define SO_LONG_H
 
 /* ================ KEYS ================ */
-# define KEY_ESC 53
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_UP 126
-# define KEY_LEFT 123
-# define KEY_DOWN 125
-# define KEY_RIGHT 124
-# define KEY_CLOSE_WIN 17
+# define KEY_ESC 65307
+# define KEY_W 119       // 'W' key
+# define KEY_A 97        // 'A' key
+# define KEY_S 115       // 'S' key
+# define KEY_D 100       // 'D' key
+# define KEY_UP 65362    // Arrow Up
+# define KEY_LEFT 65361  // Arrow Left
+# define KEY_DOWN 65364  // Arrow Down
+# define KEY_RIGHT 65363 // Arrow Right
+# define KEY_ESC 65307   // Escape key
+# define KEY_CLOSE_WIN 33 // This might vary, as it often depends on the windowing system setup
 
-#define CLEAR "\x1b[0m"
-#define RED "\x1b[31m"
-#define GREEN "\x1b[32m"
 
-#define PLAYER "textures/bear.xpm"
-#define WALL "textures/tree.xpm"
-#define COIN "textures/salmon.xpm"
-#define FLOOR "textures/floor.xpm"
-#define EXIT "textures/cave.xpm"
- 
-#include "minilibx-linux/mlx.h"
-#include "libft/libft.h"
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
+# define CLEAR "\x1b[0m"
+# define RED "\x1b[31m"
+# define GREEN "\x1b[32m"
+
+# define PLAYER "textures/bear.xpm"
+# define WALL "textures/tree.xpm"
+# define COIN "textures/salmon.xpm"
+# define FLOOR "textures/floor.xpm"
+# define EXIT "textures/cave.xpm"
+
+# include "minilibx-linux/mlx.h"
+# include "libft/libft.h"
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 
 typedef struct s_count
@@ -121,6 +123,8 @@ void    map_size(t_map *mapp, char *file);
 /*MOVES*/
 
 void    position_P(t_map *data);
+int     key_handler(int keycode, t_map *data);
+int     x_pressed(t_map *mapp);
 
 
 //temporal

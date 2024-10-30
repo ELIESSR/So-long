@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:58:36 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/29 19:30:34 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/30 20:55:17 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,29 @@ void position_P(t_map *data)
         i++;
     }
 }
+
+int	x_pressed(t_map *mapp)
+{
+	mlx_destroy_window(mapp->mlx, mapp->win);
+	exit(EXIT_SUCCESS);
+}
+
+int key_handler(int keycode, t_map *data)
+{
+	if(keycode == KEY_ESC)
+	{
+		mlx_destroy_window(data->mlx, data->win);
+		exit(EXIT_SUCCESS);
+	}
+    // if (keycode == KEY_D || keycode == KEY_RIGHT)
+    //     vars->player.pos.x += 1;
+    // else if (keycode == KEY_S || keycode == KEY_LEFT)
+    //     vars->player.pos.x -= 1;
+    // else if (keycode == KEY_W || keycode == KEY_UP)
+    //     vars->player.pos.y -= 1;
+    // else if (keycode == KEY_S || keycode == KEY_DOWN)
+    //     vars->player.pos.y += 1;
+    return (0);
+}
+/* necesito saber las pocisiones */
+/* necesito hacer los movimientos */
