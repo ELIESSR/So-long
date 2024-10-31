@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:21:14 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 16:00:52 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 19:59:35 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void move_right(t_map *data)
 
         data->x_p++;
         data->moves++;
-        printf("Number of movements:%d\n", data->moves);
+        printf("Number of movements : %d\n", data->moves);
     }
 }
 
@@ -61,7 +61,7 @@ void move_left(t_map *data)
 
         data->x_p--;
         data->moves++;
-        printf("Number of movements:%d\n", data->moves);
+        printf("Number of movements : %d\n", data->moves);
     }
 }
 void move_up(t_map *data)
@@ -74,7 +74,7 @@ void move_up(t_map *data)
 
         data->x_p--;
         data->moves++;
-        printf("Number of movements:%d\n", data->moves);
+        printf("Number of movements : %d\n", data->moves);
     }
 }
 
@@ -88,6 +88,6 @@ void move_down(t_map *data)
 
         data->y_p++;
         data->moves++;
-        printf("Number of movements:%d\n", data->moves);
+        printf("Number of movements : %d\n", data->moves);
     }
 }

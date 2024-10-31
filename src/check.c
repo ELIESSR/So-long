@@ -6,13 +6,11 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 17:26:02 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 19:52:55 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-/*======CHECK========*/
 
 void	correct_character(t_map *data)
 {
@@ -28,7 +26,7 @@ void	correct_character(t_map *data)
 			if (data->map[j][i] != '1' && data->map[j][i] != '0'
 				&& data->map[j][i] != 'P' && data->map[j][i] != 'E'
 				&& data->map[j][i] != 'C')
-				ms_error("CHAR_ERROR");
+				ms_error("CHAR_ERROR!");
 			else
 			{
 				i++;
@@ -63,9 +61,10 @@ void	check_characters(t_map *mapp)
 		}
 		i++;
 	}
+	printf("si %i\n", cnt.coincn);
 	if (cnt.coincn < 1 || cnt.playercn != 1 || 
 					cnt.endcn != 1)
-		ms_error("BAD_CHARACTER");
+		ms_error("BAD_CHARACTER!");
 }
 
 
@@ -92,7 +91,7 @@ void	check_rectangular(t_map *mapp)
 	}
 }
 
-void map_size(t_map *mapp, char *file)
+void	map_size(t_map *mapp, char *file)
 {
 	char *gnl;
 	int fd;
@@ -102,7 +101,7 @@ void map_size(t_map *mapp, char *file)
 	gnl = get_next_line(fd);
 	if (!gnl)
 	{
-		write(2, "\n\nERROR_READ_MAP\n\n", 19);
+		write(2, "\n\nERROR_READ_MAP!\n\n", 19);
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
@@ -119,9 +118,9 @@ void map_size(t_map *mapp, char *file)
 	close(fd);
 }
 
-void map_check(t_map *mapp)
+void	map_check(t_map *mapp)
 {
 	correct_character(mapp);
 	check_characters(mapp);
-	check_rectangular(mapp);
+	check_rectangular(mapp);	
 }

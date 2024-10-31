@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:19 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/29 19:54:28 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 18:23:23 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int init_images(t_map *mapp)
     mapp->img->coin = mlx_xpm_file_to_image(mapp->mlx, "textures/salmon.xpm", &i, &j);
 
     if (!mapp->img->wall || !mapp->img->player || !mapp->img->exit || !mapp->img->coin)
-	{
-       	exit(EXIT_FAILURE);
-    }
+       	ms_error("BAD_SPRITES");
     return 1; // Devuelve 1 si tiene éxito, 0 en caso de error
 }
 void	put_sprites(t_map *mapp, int *i, int  *j)

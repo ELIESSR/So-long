@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/30 21:58:26 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 19:15:06 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,19 @@
 
 typedef struct s_count
 {
-    int playercn;
-    int coincn;
-    int endcn;
+    int		playercn;
+    int		coincn;
+    int		endcn;
            
 } t_count;
 
 typedef struct s_img
 {
-    int   *wall;
-    int    *player;
-    int   *floor;
-    int    *coin;
-    int    *exit;
+    int		*wall;
+    int		*player;
+    int		*floor;
+    int		*coin;
+    int		*exit;
     int		width;
     int		height;
 
@@ -66,74 +66,66 @@ typedef struct s_img
 
 typedef struct s_map
 {
-    char    **map;
     int     height_map;
     int     width_map;
     int     x_p;
     int     y_p;
+    int     moves;
     void    *mlx;
     void    *win;
-    int     moves;
+    char    **map;
     t_img	*img;
     t_count *count;
     
 } t_map;
 
-// typedef struct s_data
-// {
-//     void    *mlx;
-//     void    *win;
-//     t_map   *map;
-//     t_img	*img;
-//     t_count *count;
-    
-// } t_data;
 
 /*UTILS*/
 
 void    free_map(char **map);
 void    map_ext(const char *str, const char *to_find);
-
 void	ms_error(char *str);
+
 
 /*MAP*/
 
 void    map_read(t_map *map, char *file);
-// int     key_handler(int keycode, t_data *game);
-// void    init(t_data *game);
+void	ft_maplloc(t_map *data, char *file);
+void    save_map(t_map *mapp, int fd);
+void    map_size(t_map *mapp, char *file);
 
-void    put_sprites(t_map *mapp, int *i, int *j);
-void	put_floor(t_map *mapp);
-int     init_images(t_map *mapp);
-void    ft_draw(t_map *mapp);
-int     draw_map(t_map *mapp);
-void	game_init(t_map *game);
 
 /*CHECK*/
 
 void	check_characters(t_map *mapp);
 void	check_rectangular(t_map *mapp);
-
 void	correct_character(t_map *data);
-//void	correct_character(t_map *mapp);
 void    map_check(t_map *mapp);
-void    save_map(t_map *mapp, int fd);
-void    map_size(t_map *mapp, char *file);
-// extern int parsing(int b, char *map);
+
+
+/*HOOK*/
+
+int     key_handler(int keycode, t_map *data);
+int     x_pressed(t_map *mapp);
+void    position_P(t_map *data);
+
 
 /*MOVES*/
 
-void    position_P(t_map *data);
-int     key_handler(int keycode, t_map *data);
-int     x_pressed(t_map *mapp);
 void    move_right(t_map *data);
 void    move_left(t_map *data);
 void    move_up(t_map *data);
 void    move_down(t_map *data);
 
 
-//temporal
-//void print_map(char **map);
-//void *init_map(int rows, int cols);
-void	ft_maplloc(t_map *data, char *file);
+/*GAME*/
+
+int     init_images(t_map *mapp);
+int     draw_map(t_map *mapp);
+void    put_sprites(t_map *mapp, int *i, int *j);
+void	put_floor(t_map *mapp);
+void    ft_draw(t_map *mapp);
+void	game_init(t_map *game);
+
+
 #endif

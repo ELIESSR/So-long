@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 17:07:27 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 19:51:52 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,22 @@ void	ft_maplloc(t_map *data, char *file)
 	fd = open(file, O_RDONLY);
 	i = 0;
 	data->map = (char **)malloc(sizeof(char *) * (data->height_map + 1));
-	//if (!data->map)
+	if (!data->map)
+	{
+		free(data);
+		close(fd);
+	}
 	while (i < data->height_map)
 	{
 		gnl = get_next_line(fd);
-		//if (!gnl)
+		if (!gnl)
+		{
+			free(gnl);
+			free(data);
+			close(fd);
+		}
 		data->map[i] = ft_strdup(gnl);
-		// if (!data->map[i])
+		//if (!data->map[i])
 		data->map[i][data->width_map] = '\0';
 		i++;
 		free(gnl);
@@ -57,7 +66,7 @@ int main(int ac, char *argv[])
 
 	mapp.moves = 0;
 	if (ac != 2)
-		ms_error("Bad arguments\n");
+		ms_error("BAD_ARGUMENTS!\n");
 	else
 	{
 		map_size(&mapp, argv[1]);
@@ -72,7 +81,7 @@ int main(int ac, char *argv[])
             fprintf(stderr, "Error al inicializar las imágenes\n");
             return 1;
 		}
-		printf("Number of movements:%d\n", mapp.moves);
+		printf("Number of movements : %d\n", mapp.moves);
 		mlx_loop_hook(mapp.mlx, draw_map, &mapp);
 		mlx_hook(mapp.win, KEY_CLOSE_WIN, 0, x_pressed, &mapp);
 		mlx_key_hook(mapp.win, key_handler, &mapp);
