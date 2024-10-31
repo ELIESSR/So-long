@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/29 19:54:06 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 17:07:58 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,6 @@ void map_size(t_map *mapp, char *file)
     	mapp->height_map++;
     	free(gnl);
 	    gnl = get_next_line(fd);
-	    // if (gnl && ft_strlen(gnl) - 1 != mapp->width_map)
-		// {
-		// 	write(2, "\n\nMAP_SIZE_ERROR\n\n", 19);
-		// 	free(gnl);
-        // 	close(fd);
-        // 	exit(EXIT_FAILURE);
-    	// }
 	}
 	free(gnl);
 	close(fd);
@@ -131,13 +124,7 @@ void map_size(t_map *mapp, char *file)
 
 void map_check(t_map *mapp)
 {
-	// t_count cnt;
-	
-	// cnt.coincn = 0;
-	// cnt.endcn = 0;
-	// cnt.playercn = 0;
-	
 	correct_character(mapp);
-	check_characters(mapp);//cuantos caracteres hay
+	check_characters(mapp);
 	check_rectangular(mapp);
 }

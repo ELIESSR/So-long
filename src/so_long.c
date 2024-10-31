@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 15:56:45 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 17:07:27 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	map_read(t_map *mapp, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		ms_error("FILE");
-	
-	// map_size(mapp, file);
 	ft_maplloc(mapp, file);
 	map_check(mapp);
 	
@@ -55,16 +53,13 @@ void	ft_maplloc(t_map *data, char *file)
 
 int main(int ac, char *argv[])
 {
-	// t_data game;
 	t_map  mapp;
 
 	mapp.moves = 0;
-	//game = malloc(sizeof(t_data));
 	if (ac != 2)
 		ms_error("Bad arguments\n");
 	else
 	{
-		//game->mlx = mlx_init();
 		map_size(&mapp, argv[1]);
 		map_read(&mapp, argv[1]);
 
