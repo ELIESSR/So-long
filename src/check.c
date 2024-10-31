@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 17:07:58 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 17:26:02 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ void	correct_character(t_map *data)
 			if (data->map[j][i] != '1' && data->map[j][i] != '0'
 				&& data->map[j][i] != 'P' && data->map[j][i] != 'E'
 				&& data->map[j][i] != 'C')
-			{
-				write(2, "\n\nCHAR_ERROR\n\n", 15);
-				exit(EXIT_FAILURE);
-			}
+				ms_error("CHAR_ERROR");
 			else
 			{
 				i++;
