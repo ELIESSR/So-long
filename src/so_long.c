@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/30 22:06:40 by elteran          ###   ########.fr       */
+/*   Updated: 2024/10/31 15:56:45 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int main(int ac, char *argv[])
 {
 	// t_data game;
 	t_map  mapp;
-	
+
+	mapp.moves = 0;
 	//game = malloc(sizeof(t_data));
 	if (ac != 2)
 		ms_error("Bad arguments\n");
