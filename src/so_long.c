@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/11/14 17:49:10 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 19:11:26 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int main(int ac, char *argv[])
             return 1;
 		}
 		printf("Number of movements : %d\n", mapp.moves);
-		mlx_loop_hook(mapp.mlx, draw_map, &mapp);
+		mlx_loop_hook(mapp.mlx, ft_draw, &mapp);
 		mlx_hook(mapp.win, KEY_CLOSE_WIN, 0, x_pressed, &mapp);
 		mlx_key_hook(mapp.win, key_handler, &mapp);
 		mlx_loop(mapp.mlx);

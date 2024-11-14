@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:19 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 21:04:58 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 19:22:17 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ int init_images(t_map *mapp)
 	int j = mapp->height_map;
     // Implementación para inicializar las imágenes en mapp->img
     mapp->img = malloc(sizeof(t_img));
-    if (!mapp->img) return 0;
+    if (!mapp->img) 
+		return 0;
 
     mapp->img->wall = mlx_xpm_file_to_image(mapp->mlx, "textures/tree.xpm", &i, &j);
     mapp->img->floor = mlx_xpm_file_to_image(mapp->mlx, "textures/floor.xpm", &i, &j);
     mapp->img->player = mlx_xpm_file_to_image(mapp->mlx, "textures/bear.xpm", &i, &j);
+    mapp->img->player_left = mlx_xpm_file_to_image(mapp->mlx, "textures/bear_left.xpm", &i, &j);
     mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx, "textures/cave.xpm", &i, &j);
     mapp->img->coin = mlx_xpm_file_to_image(mapp->mlx, "textures/salmon.xpm", &i, &j);
 
@@ -58,7 +60,7 @@ void	put_sprites(t_map *mapp, int *i, int  *j)
 	position_P(mapp);
 }
 
-void ft_draw(t_map *mapp)
+int ft_draw(t_map *mapp)
 {
 	int j;
 	int i;
@@ -74,16 +76,11 @@ void ft_draw(t_map *mapp)
         }
         i++;
     }
+	return  (0);
 }
 
-int	draw_map(t_map *mapp)
-{
-	ft_draw(mapp);
-	// if (/*mapp->count == 0 &&*/ mapp->count->playercn == 1 && mapp->count->endcn == 1)
-	// {
-	// 	mlx_clear_window(mapp->mlx, mapp->win);
-	// 	printf("\n\n-------------------YOU WIN-------------------\n\n\n");
-	// 	exit(EXIT_FAILURE);
-	// }
-	return (0);
-}
+// int	draw_map(t_map *mapp)
+// {
+// 	ft_draw(mapp);
+// 	return (0);
+// }

@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:21:14 by elteran           #+#    #+#             */
-/*   Updated: 2024/11/14 16:28:15 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 22:12:31 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,16 @@ void move_right(t_map *data)
         printf("Number of movements : %d\n", data->moves);
     }
 	else if (data->map[data->y_p][data->x_p + 1] == 'E' && data->coincn == 0)
-		exit(EXIT_SUCCESS);
+        ms_win(data);
+	// {
+	// 	mlx_clear_window(data->mlx, data->win);
+	// 	printf(GREEN"\n\n-------------------YOU WIN-------------------\n\n\n"CLEAR);
+	// 	exit(EXIT_FAILURE);
+	// }
 }
 
 void move_left(t_map *data)
-{
+{  
     if (data->map[data->y_p][data->x_p - 1] == '0' || 
         data->map[data->y_p][data->x_p - 1] == 'C')
     {
@@ -74,7 +79,7 @@ void move_left(t_map *data)
         printf("Number of movements : %d\n", data->moves);
     }
 	else if (data->map[data->y_p][data->x_p - 1] == 'E' && data->coincn == 0)
-		exit(EXIT_SUCCESS);
+	    ms_win(data);
 }
 void move_up(t_map *data)
 {
@@ -93,7 +98,7 @@ void move_up(t_map *data)
         printf("Number of movements : %d\n", data->moves);
     }
 	else if (data->map[data->y_p - 1][data->x_p] == 'E' && data->coincn == 0)
-		exit(EXIT_SUCCESS);
+	    ms_win(data);
 }
 
 void move_down(t_map *data)
@@ -113,5 +118,5 @@ void move_down(t_map *data)
         printf("Number of movements : %d\n", data->moves);
     }
 	else if (data->map[data->y_p + 1][data->x_p] == 'E' && data->coincn == 0)
-		exit(EXIT_SUCCESS);
+	    ms_win(data);
 }

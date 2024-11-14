@@ -8,6 +8,14 @@ void	ms_error(char *str)
 	ft_putstr_fd(CLEAR, 2);
 	exit(EXIT_FAILURE);
 }
+
+void ms_win(t_map *data)
+{
+	mlx_clear_window(data->mlx, data->win);
+	printf(GREEN"\n\n-------------------YOU WIN-------------------\n\n\n"CLEAR);
+	exit(EXIT_FAILURE);
+}
+
 void free_map(char **map, char *str)
 {
 	int i;

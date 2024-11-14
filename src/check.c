@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/11/14 16:44:54 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 19:20:22 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,19 @@ void	correct_character(t_map *data)
 	int	i;
 	int	j;
 
-	j = 0;
-	while (data->map[j])
+	i = 0;
+	while (data->map[i])
 	{
-		i = 0;
-		while (data->map[j][i])
+		j = 0;
+		while (data->map[i][j])
 		{
-			if (data->map[j][i] != '1' && data->map[j][i] != '0'
-				&& data->map[j][i] != 'P' && data->map[j][i] != 'E'
-				&& data->map[j][i] != 'C')
-				ms_error("CHAR_ERROR!");
-			else
-			{
-				i++;
-			}
+			if (data->map[i][j] != '1' && data->map[i][j] != '0'
+				&& data->map[i][j] != 'P' && data->map[i][j] != 'E'
+				&& data->map[i][j] != 'C')
+				free_map(data->map,"CHAR_ERROR!");
+			j++;
 		}
-		j++;
+		i++;
 	}
 }
 
@@ -60,7 +57,7 @@ void	check_characters(t_map *mapp)
 	printf(GREEN"\n---------------------\nSALMON : %i\n---------------------\n\n"CLEAR, mapp->coincn);
 	if (mapp->coincn < 1 || mapp->playercn != 1 || 
 					mapp->endcn != 1)
-		ms_error("BAD_CHARACTER!");
+		free_map(mapp->map,"BAD_CHARACTER!");
 }
 
 
@@ -76,11 +73,11 @@ void	check_rectangular(t_map *mapp)
 		while(mapp->map[i][j])
 		{
 			if (ft_strlen(mapp->map[i]) != mapp->width_map)
-				ms_error("IT IS NOT RECTANGULAR");
+				free_map(mapp->map, "IT IS NOT RECTANGULAR");
 			else if ((i == 0 || i == mapp->height_map - 1) && mapp->map[i][j] != '1')
-				ms_error("BAD TOP OR BOTTOM");
+				free_map(mapp->map, "BAD TOP OR BOTTOM");
 			else if ((j == 0 || j == mapp->width_map - 1) && mapp->map[i][j] != '1')
-				ms_error("BAD LATERAL");
+				free_map(mapp->map, "BAD LATERAL");
 			j++;
 		}
 		if (ft_strlen(mapp->map[0]) != ft_strlen(mapp->map[i]))
@@ -122,7 +119,7 @@ void	map_check(t_map *mapp)
 	mapp->endcn = 0;
 	mapp->coincn = 0;
 
+	check_rectangular(mapp);	
 	correct_character(mapp);
 	check_characters(mapp);
-	check_rectangular(mapp);	
 }

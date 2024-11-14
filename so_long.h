@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/11/14 16:45:28 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 22:13:28 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_img
 {
     int		*wall;
     int		*player;
+    int     *player_left;
     int		*floor;
     int		*coin;
     int		*exit;
@@ -79,6 +80,7 @@ typedef struct s_map
 void    free_map(char **map, char *str);
 void    map_ext(const char *str, const char *to_find);
 void	ms_error(char *str);
+void ms_win(t_map *data);
 
 
 /*MAP*/
@@ -115,10 +117,9 @@ void    move_down(t_map *data);
 /*GAME*/
 
 int     init_images(t_map *mapp);
-int     draw_map(t_map *mapp);
+int     ft_draw(t_map *mapp);
 void    put_sprites(t_map *mapp, int *i, int *j);
 void	put_floor(t_map *mapp);
-void    ft_draw(t_map *mapp);
 void	game_init(t_map *game);
 
 
