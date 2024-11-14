@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:21:14 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 19:59:35 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 16:15:04 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,13 @@ void move_right(t_map *data)
     if (data->map[data->y_p][data->x_p + 1] == '0' || 
         data->map[data->y_p][data->x_p + 1] == 'C')
     {
+        if(data->map[data->y_p][data->x_p + 1] == 'C')
+        {
+            data->coincn--;
+			printf(GREEN"SALMONES RESTANTES : %i\n"CLEAR, data->coincn);
+        }
         data->map[data->y_p][data->x_p] = '0';
         data->map[data->y_p][data->x_p + 1] = 'P';
-
         data->x_p++;
         data->moves++;
         printf("Number of movements : %d\n", data->moves);
@@ -56,9 +60,13 @@ void move_left(t_map *data)
     if (data->map[data->y_p][data->x_p - 1] == '0' || 
         data->map[data->y_p][data->x_p - 1] == 'C')
     {
+        if(data->map[data->y_p][data->x_p - 1] == 'C')
+		{
+            data->coincn--;
+			printf(GREEN"SALMONES RESTANTES : %i\n"CLEAR, data->coincn);
+        }
         data->map[data->y_p][data->x_p] = '0';
         data->map[data->y_p][data->x_p - 1] = 'P';
-
         data->x_p--;
         data->moves++;
         printf("Number of movements : %d\n", data->moves);
@@ -69,9 +77,13 @@ void move_up(t_map *data)
     if (data->map[data->y_p - 1][data->x_p] == '0' || 
         data->map[data->y_p - 1][data->x_p] == 'C')
     {
-        data->map[data->y_p][data->x_p] = '0';
+        if(data->map[data->y_p - 1][data->x_p] == 'C')
+        {
+            data->coincn--;
+			printf(GREEN"SALMONES RESTANTES : %i\n"CLEAR, data->coincn);
+        }
+		data->map[data->y_p][data->x_p] = '0';
         data->map[data->y_p - 1][data->x_p] = 'P';
-
         data->x_p--;
         data->moves++;
         printf("Number of movements : %d\n", data->moves);
@@ -83,9 +95,13 @@ void move_down(t_map *data)
     if (data->map[data->y_p + 1][data->x_p] == '0' || 
         data->map[data->y_p + 1][data->x_p] == 'C')
     {
-        data->map[data->y_p][data->x_p] = '0';
+        if(data->map[data->y_p + 1][data->x_p] == 'C')
+        {
+            data->coincn--;
+			printf(GREEN"SALMONES RESTANTES : %i\n"CLEAR, data->coincn);
+        }
+		data->map[data->y_p][data->x_p] = '0';
         data->map[data->y_p + 1][data->x_p] = 'P';
-
         data->y_p++;
         data->moves++;
         printf("Number of movements : %d\n", data->moves);

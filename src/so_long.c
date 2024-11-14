@@ -6,12 +6,16 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:06 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 19:51:52 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 15:56:09 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+/*IMPORTANTE*/
+//tengo que arreglar map_ext
+//arreglar check_rectangular
+//comprobar si es jugable
 
 void	map_read(t_map *mapp, char *file)
 {
@@ -62,7 +66,7 @@ void	ft_maplloc(t_map *data, char *file)
 
 int main(int ac, char *argv[])
 {
-	t_map  mapp;
+	t_map	mapp;
 
 	mapp.moves = 0;
 	if (ac != 2)

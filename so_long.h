@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 19:15:06 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 16:10:42 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,6 @@
 # include <unistd.h>
 
 
-typedef struct s_count
-{
-    int		playercn;
-    int		coincn;
-    int		endcn;
-           
-} t_count;
-
 typedef struct s_img
 {
     int		*wall;
@@ -71,11 +63,13 @@ typedef struct s_map
     int     x_p;
     int     y_p;
     int     moves;
+    int		playercn;
+    int		coincn;
+    int		endcn;
     void    *mlx;
     void    *win;
     char    **map;
     t_img	*img;
-    t_count *count;
     
 } t_map;
 

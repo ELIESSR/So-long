@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/10/31 19:52:55 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 16:08:06 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ void	check_characters(t_map *mapp)
 {
 	int i;
 	int j;
-	t_count cnt;
-	cnt.playercn = 0;
-	cnt.endcn = 0;
-	cnt.coincn = 0;
 
 	i = 0;
 	while (mapp->map[i])
@@ -52,18 +48,18 @@ void	check_characters(t_map *mapp)
 		while (mapp->map[i][j])
 		{
 			if (mapp->map[i][j] == 'P')
-				cnt.playercn++;
+				mapp->playercn++;
 			if (mapp->map[i][j] == 'E')
-				cnt.endcn++;
+				mapp->endcn++;
 			if (mapp->map[i][j] == 'C')
-				cnt.coincn++;
+				mapp->coincn++;
 			j++;
 		}
 		i++;
 	}
-	printf("si %i\n", cnt.coincn);
-	if (cnt.coincn < 1 || cnt.playercn != 1 || 
-					cnt.endcn != 1)
+	printf("salmones: %i\n", mapp->coincn);
+	if (mapp->coincn < 1 || mapp->playercn != 1 || 
+					mapp->endcn != 1)
 		ms_error("BAD_CHARACTER!");
 }
 
@@ -120,6 +116,10 @@ void	map_size(t_map *mapp, char *file)
 
 void	map_check(t_map *mapp)
 {
+	mapp->playercn = 0;
+	mapp->endcn = 0;
+	mapp->coincn = 0;
+
 	correct_character(mapp);
 	check_characters(mapp);
 	check_rectangular(mapp);	
