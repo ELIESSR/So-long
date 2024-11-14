@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:49:15 by elteran           #+#    #+#             */
-/*   Updated: 2024/11/14 16:08:06 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 16:44:54 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_characters(t_map *mapp)
 		}
 		i++;
 	}
-	printf("salmones: %i\n", mapp->coincn);
+	printf(GREEN"\n---------------------\nSALMON : %i\n---------------------\n\n"CLEAR, mapp->coincn);
 	if (mapp->coincn < 1 || mapp->playercn != 1 || 
 					mapp->endcn != 1)
 		ms_error("BAD_CHARACTER!");
@@ -83,6 +83,8 @@ void	check_rectangular(t_map *mapp)
 				ms_error("BAD LATERAL");
 			j++;
 		}
+		if (ft_strlen(mapp->map[0]) != ft_strlen(mapp->map[i]))
+			free_map(mapp->map, "map pupu");
 		i++;
 	}
 }

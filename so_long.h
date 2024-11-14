@@ -6,7 +6,7 @@
 /*   By: elteran <elteran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:17:33 by elteran           #+#    #+#             */
-/*   Updated: 2024/11/14 16:10:42 by elteran          ###   ########.fr       */
+/*   Updated: 2024/11/14 16:45:28 by elteran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct s_map
 
 /*UTILS*/
 
-void    free_map(char **map);
+void    free_map(char **map, char *str);
 void    map_ext(const char *str, const char *to_find);
 void	ms_error(char *str);
 

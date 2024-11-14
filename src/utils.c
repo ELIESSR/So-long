@@ -8,7 +8,7 @@ void	ms_error(char *str)
 	ft_putstr_fd(CLEAR, 2);
 	exit(EXIT_FAILURE);
 }
-void free_map(char **map)
+void free_map(char **map, char *str)
 {
 	int i;
 	
@@ -19,7 +19,7 @@ void free_map(char **map)
 		i++;
 	}
 	free(map);
-	exit(EXIT_FAILURE);
+	ms_error(str);
 }
 
 void	map_ext(const char *str, const char *to_find)
@@ -40,13 +40,3 @@ void	map_ext(const char *str, const char *to_find)
 		i++;
 	}
 }
-
-// void	game_init(t_data *game)
-// {
-// 	game->mlx = mlx_init();
-// 	game->win = mlx_new_window(game->mlx, (game->map->width_map * 32),
-// 					(game->map->height_map * 32), "Letsgoyunpeiisback");
-// 	put_floor(game);
-// 	put_sprites(game);
-// 	mlx_loop(game->mlx);
-// }
